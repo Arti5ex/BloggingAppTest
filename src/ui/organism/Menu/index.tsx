@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import css from "./index.module.css";
 import {Post, PostFull} from "ui/molecule";
+import { Media } from "lib/media";
+import { Link } from "react-router-dom";
 
 type Props = {
 }
@@ -16,16 +18,32 @@ const Menu: React.FC<Props> = () => {
       .then(json => setPosts(json));
   }, []);
 
-  console.log(posts.find((value) => value.id === activePost))
+  const removePost = (id: number) => {
+    setPosts(posts.filter((item) => item.id !== id))
+  }
 
   return (
     <div className={css.container}>
       <div className={css.containerMenu}>
         {posts.map((value) => (
-          <Post {...value} activePost={activePost} onClick={() => setActivePosts(value.id)}/>
+          <>
+            <Media greaterThanOrEqual="md">
+              <Post 
+                {...value} 
+                activePost={activePost} 
+                onClick={() => setActivePosts(value.id)}
+                onRemove={removePost}
+              />
+            </Media>
+            <Media lessThan="md">
+              <Link to={`post/${value.id}`}>
+                <Post {...value} activePost={activePost} onRemove={removePost}/>
+              </Link>
+            </Media>
+          </>
         ))}
       </div>
-      <div>
+      <div className={css.activePost}>
         {activePost &&
           <PostFull {...posts.find((value) => value.id === activePost)}/>
         }

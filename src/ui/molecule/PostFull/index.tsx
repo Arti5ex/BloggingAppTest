@@ -3,13 +3,12 @@ import styles from "./index.module.css";
 import { List, Comment } from 'antd';
 
 type Props = {
-  id: number;
-  title: string;
-  body: string;
+  id?: number;
+  title?: string;
+  body?: string;
 }
 
 const PostFull: React.FC<Props> = ({id, title, body}) => {
-console.log(id)
   const [postComments, setPostComments] = useState<any[]>([]);
 
   useEffect(() => {
@@ -22,17 +21,19 @@ console.log(id)
     <div className={styles.post}>
       <div className={styles.title} title={title}>{title}</div>
       <div className={styles.body} title={body}>{body}</div> 
-      <List
-        itemLayout="horizontal"
-        header={`${postComments.length} replies`}
-        dataSource={postComments}
-        renderItem={item => (
-          <Comment
-            author={<b>{item.name}</b>}
-            content={item.body}
-          />
-        )}
-      />
+      {postComments.length > 0 &&
+        <List
+          itemLayout="horizontal"
+          header={`${postComments.length} replies`}
+          dataSource={postComments}
+          renderItem={item => (
+            <Comment
+              author={<b>{item.name}</b>}
+              content={item.body}
+            />
+          )}
+        />
+      }
     </div>  
   ) 
 }

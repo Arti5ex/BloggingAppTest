@@ -6,6 +6,7 @@
   overflow: hidden;
   box-sizing: border-box;
   cursor: pointer;
+  position: relative;
 }
 .post .title {
   font-size: 16px;
@@ -19,4 +20,10 @@
 }
 .post.active {
   background-color: #eee;
+}
+.icon {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 5px;
 }
