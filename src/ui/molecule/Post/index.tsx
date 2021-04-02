@@ -11,7 +11,7 @@ type Props = {
   onClick: any;
 }
 
-const Post: React.FC<Props> = ({userId, id, title, body, activePost, onClick}) => {
+const Comment: React.FC<Props> = ({userId, id, title, body, activePost, onClick}) => {
 
   return (
     <div className={cn(styles.post, {[styles.active]: activePost === id})} onClick={onClick}>
@@ -21,4 +21,4 @@ const Post: React.FC<Props> = ({userId, id, title, body, activePost, onClick}) =
   ) 
 }
 
-export default Post;
+export default Comment;

@@ -7,4 +7,9 @@
   margin-bottom: 20px;
 }
 .post .body {
+  margin-bottom: 40px;
+}
+
+.ant-comment-content-author {
+  font-weight: 600;
 }
