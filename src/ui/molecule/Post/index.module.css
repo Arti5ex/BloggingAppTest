@@ -1,0 +1,22 @@
+.post {
+  padding: 10px 20px;
+  /* height: 50px; */
+  border: 1px solid black;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.post .title {
+  font-size: 16px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.post .body {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.post.active {
+  background-color: #eee;
+}
