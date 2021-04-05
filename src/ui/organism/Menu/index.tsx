@@ -36,9 +36,9 @@ const Menu: React.FC<Props> = () => {
               />
             </Media>
             <Media lessThan="md">
-              <Link to={`post/${value.id}`}>
-                <Post {...value} activePost={activePost} onRemove={removePost}/>
-              </Link>
+              {/* <Link to={`post/${value.id}`}> */}
+                <Post {...value} activePost={activePost} onRemove={removePost} withLink={true}/>
+              {/* </Link> */}
             </Media>
           </>
         ))}
